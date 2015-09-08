@@ -31,7 +31,7 @@ You will create it in 4 simple steps:
 4. Define *StubAuthenticatorService* in *AndroidManifest.xml* file
    
    
-   		'''XML
+   		```XML
    		<service android:name="ch.teleboy.sync_app_settings.StubAuthenticatorService">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator" />
@@ -51,7 +51,7 @@ Steps to have it:
 1. Extend *ContentProvider* and implement empty methods
 2. Define ContentProvider i *AndroidManifest.xml* as any other CntentProvider
 
-		'''XML
+		```XML
 		<provider
             android:name="ch.teleboy.sync_app_settings.StubContentProvider"
             android:authorities="com.eutechpro.syncadapterexample.provider"
@@ -70,7 +70,7 @@ But, that is not all. You need few more steps.
 
 First, add xml settings. Afain, in "xml" directory add **synxadapter.xml** with following code:
 
-		'''XML
+		```XML
 		<?xml version="1.0" encoding="utf-8"?>
 		<sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
               android:accountType="com.eutechpro.syncadapterexample"
@@ -93,7 +93,7 @@ And final step is to create Service that will run your SyncAdapter: **SyncAdapte
 
 Of course, define it in Manifset file
 
-		'''XML
+		```XML
 		<service
             android:name="ch.teleboy.sync_app_settings.SyncAdapterService"
             android:exported="true"
@@ -115,7 +115,7 @@ Starting Sync process is simple.
 1. Define account. It doesn't metter if you already created same account
 		
 		
-		'''Java
+		```Java
 		public static final String AUTHORITY    = "com.eutechpro.syncadapterexample.provider";
     	public static final String ACCOUNT_TYPE = "com.eutechpro.syncadapterexample";
     	public static final String ACCOUNT      = "dummyaccount";
@@ -126,13 +126,13 @@ Starting Sync process is simple.
 2. Start SyncAdapter
 	
 	
-		'''Java
+		```Java
 		ContentResolver.setSyncAutomatically(newAccount, AUTHORITY, true);
 
 3. If you want to force Sync process, call
 
 		
-		'''Java
+		```Java
 		Bundle bundle = new Bundle();
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
