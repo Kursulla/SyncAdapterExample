@@ -148,7 +148,14 @@ Starting Sync process is simple.
         ```
 
 
+###5. Add permissions
 
+At the and, add permissions in manifest
+
+	<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
 
 
 
