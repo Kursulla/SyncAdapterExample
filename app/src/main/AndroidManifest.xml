@@ -29,9 +29,7 @@
             android:exported="false"
             android:syncable="true">
     </provider>
-
-
-        <service android:name="ch.teleboy.sync_app_settings.AuthenticatorService">
+        <service android:name="ch.teleboy.sync_app_settings.StubAuthenticatorService">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator" />
             </intent-filter>
@@ -41,7 +39,7 @@
         </service>
 
         <service
-            android:name="ch.teleboy.sync_app_settings.SyncService"
+            android:name="ch.teleboy.sync_app_settings.SyncAdapterService"
             android:exported="true"
             android:process=":sync">
             <intent-filter>
