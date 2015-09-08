@@ -23,7 +23,8 @@ You will create it in 4 simple steps:
             android:icon="@drawable/ic_launcher"
             android:smallIcon="@drawable/ic_launcher"
             android:label="@string/app_name" />
-
+		```
+		
 	Please, pay attention to **android:accountType="com.eutechpro.syncadapterexample"**
 
 
@@ -40,6 +41,7 @@ You will create it in 4 simple steps:
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
         </service>
+        ```
    	
 
 
@@ -57,6 +59,8 @@ Steps to have it:
             android:authorities="com.eutechpro.syncadapterexample.provider"
             android:exported="false"
             android:syncable="true">
+       ```
+       
 	Here, pay attention to authorities value: **android:authorities="com.eutechpro.syncadapterexample.provider"**
 
 
@@ -79,6 +83,7 @@ First, add xml settings. Afain, in "xml" directory add **synxadapter.xml** with 
               android:isAlwaysSyncable="true"
               android:supportsUploading="false"
               android:userVisible="true" />
+        ```
 
 
 Pay attention on
@@ -105,7 +110,7 @@ Of course, define it in Manifset file
                 android:name="android.content.SyncAdapter"
                 android:resource="@xml/syncadapter" />
         </service>
-
+		```
 
 
 ###4. Syncing
@@ -122,12 +127,14 @@ Starting Sync process is simple.
 
 		Account newAccount = new Account(ACCOUNT, ACCOUNT_TYPE);
 		accountManager.addAccountExplicitly(newAccount, null, null)
-
+		```
+		
 2. Start SyncAdapter
 	
 	
 		```Java
 		ContentResolver.setSyncAutomatically(newAccount, AUTHORITY, true);
+		```
 
 3. If you want to force Sync process, call
 
@@ -138,6 +145,7 @@ Starting Sync process is simple.
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
 
         ContentResolver.requestSync(newAccount, AUTHORITY, bundle);
+        ```
 
 
 
