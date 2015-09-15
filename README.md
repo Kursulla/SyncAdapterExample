@@ -53,17 +53,16 @@ Steps to have it:
 1. Extend *ContentProvider* and implement empty methods
 2. Define ContentProvider i *AndroidManifest.xml* as any other CntentProvider
 
-		```XML
+	
 		<provider
             android:name="ch.teleboy.sync_app_settings.StubContentProvider"
             android:authorities="com.eutechpro.syncadapterexample.provider"
             android:exported="false"
             android:syncable="true">
-       ```
+       	
        
-	Here, pay attention to authorities value: 			
-	**android:authorities="com.eutechpro.syncadapterexample.provider"**
-
+Here, pay attention to authorities value: 			
+**android:authorities="com.eutechpro.syncadapterexample.provider"**
 
 
 
