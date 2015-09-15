@@ -15,7 +15,7 @@ You will create it in 4 simple steps:
 3. In "xml" directory in your "res" create authenticator.xml with following content
 
 	
-		'''xml
+		```xml
 		<?xml version="1.0" encoding="utf-8"?>
 		<account-authenticator 
 			xmlns:android="http://schemas.android.com/apk/res/android"
@@ -61,7 +61,9 @@ Steps to have it:
             android:syncable="true">
        ```
        
-	Here, pay attention to authorities value: **android:authorities="com.eutechpro.syncadapterexample.provider"**
+	Here, pay attention to authorities value: 			
+	**android:authorities="com.eutechpro.syncadapterexample.provider"**
+
 
 
 
