@@ -34,7 +34,7 @@ You will create it in 4 simple steps:
    
    
 ```XML
-   		<service android:name="ch.teleboy.sync_app_settings.StubAuthenticatorService">
+   	<service android:name="ch.teleboy.sync_app_settings.StubAuthenticatorService">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator" />
             </intent-filter>
@@ -56,7 +56,7 @@ Steps to have it:
 
 	
 ```XML
-		<provider
+	<provider
             android:name="ch.teleboy.sync_app_settings.StubContentProvider"
             android:authorities="com.eutechpro.syncadapterexample.provider"
             android:exported="false"
@@ -78,7 +78,7 @@ But, that is not all. You need few more steps.
 First, add xml settings. Afain, in "xml" directory add **synxadapter.xml** with following code:
 
 ```XML
-		<?xml version="1.0" encoding="utf-8"?>
+	<?xml version="1.0" encoding="utf-8"?>
 		<sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
               android:accountType="com.eutechpro.syncadapterexample"
               android:allowParallelSyncs="false"
@@ -92,8 +92,8 @@ First, add xml settings. Afain, in "xml" directory add **synxadapter.xml** with 
 Pay attention on
 
 ```XML
-		android:accountType="com.eutechpro.syncadapterexample"
-		android:contentAuthority="com.eutechpro.syncadapterexample.provider"
+	android:accountType="com.eutechpro.syncadapterexample"
+	android:contentAuthority="com.eutechpro.syncadapterexample.provider"
 ```
 
 For the rest of attributes, please refer to [documentation](https://developer.android.com/training/sync-adapters/creating-sync-adapter.html#CreateSyncAdapterMetadata)
