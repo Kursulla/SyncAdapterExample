@@ -33,7 +33,7 @@ You will create it in 4 simple steps:
 4. Define *StubAuthenticatorService* in *AndroidManifest.xml* file
    
    
-   		```XML
+```XML
    		<service android:name="ch.teleboy.sync_app_settings.StubAuthenticatorService">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator" />
@@ -42,7 +42,7 @@ You will create it in 4 simple steps:
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
         </service>
-        ```
+```
    	
 
 
@@ -55,12 +55,13 @@ Steps to have it:
 2. Define ContentProvider i *AndroidManifest.xml* as any other CntentProvider
 
 	
+```XML
 		<provider
             android:name="ch.teleboy.sync_app_settings.StubContentProvider"
             android:authorities="com.eutechpro.syncadapterexample.provider"
             android:exported="false"
             android:syncable="true">
-       	
+```       	
        
 Here, pay attention to authorities value: 			
 **android:authorities="com.eutechpro.syncadapterexample.provider"**
@@ -76,7 +77,7 @@ But, that is not all. You need few more steps.
 
 First, add xml settings. Afain, in "xml" directory add **synxadapter.xml** with following code:
 
-		```XML
+```XML
 		<?xml version="1.0" encoding="utf-8"?>
 		<sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
               android:accountType="com.eutechpro.syncadapterexample"
@@ -85,14 +86,15 @@ First, add xml settings. Afain, in "xml" directory add **synxadapter.xml** with 
               android:isAlwaysSyncable="true"
               android:supportsUploading="false"
               android:userVisible="true" />
-        ```
+```
 
 
 Pay attention on
 
+```XML
 		android:accountType="com.eutechpro.syncadapterexample"
 		android:contentAuthority="com.eutechpro.syncadapterexample.provider"
-
+```
 
 For the rest of attributes, please refer to [documentation](https://developer.android.com/training/sync-adapters/creating-sync-adapter.html#CreateSyncAdapterMetadata)
 
@@ -100,7 +102,7 @@ And final step is to create Service that will run your SyncAdapter: **SyncAdapte
 
 Of course, define it in Manifset file
 
-		```XML
+```XML
 		<service
             android:name="ch.teleboy.sync_app_settings.SyncAdapterService"
             android:exported="true"
@@ -112,7 +114,7 @@ Of course, define it in Manifset file
                 android:name="android.content.SyncAdapter"
                 android:resource="@xml/syncadapter" />
         </service>
-		```
+```
 
 
 ###4. Syncing
@@ -122,43 +124,44 @@ Starting Sync process is simple.
 1. Define account. It doesn't metter if you already created same account
 		
 		
-		```Java
+```Java
 		public static final String AUTHORITY    = "com.eutechpro.syncadapterexample.provider";
     	public static final String ACCOUNT_TYPE = "com.eutechpro.syncadapterexample";
     	public static final String ACCOUNT      = "dummyaccount";
 
 		Account newAccount = new Account(ACCOUNT, ACCOUNT_TYPE);
 		accountManager.addAccountExplicitly(newAccount, null, null)
-		```
+```
 		
 2. Start SyncAdapter
 	
 	
-		```Java
+```Java
 		ContentResolver.setSyncAutomatically(newAccount, AUTHORITY, true);
-		```
+```
 
 3. If you want to force Sync process, call
 
 		
-		```Java
+```Java
 		Bundle bundle = new Bundle();
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
 
         ContentResolver.requestSync(newAccount, AUTHORITY, bundle);
-        ```
+```
 
 
 ###5. Add permissions
 
 At the and, add permissions in manifest
 
+```XML
 	<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
-    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
-    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
-
+    	<uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    	<uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    	<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+```
 
 
 ###5.Enyoj!
