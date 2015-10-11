@@ -15,15 +15,16 @@ You will create it in 4 simple steps:
 3. In "xml" directory in your "res" create authenticator.xml with following content
 
 	
-		```xml
-		<?xml version="1.0" encoding="utf-8"?>
-		<account-authenticator 
+```xml
+   <?xml version="1.0" encoding="utf-8"?>
+	   <account-authenticator 
 			xmlns:android="http://schemas.android.com/apk/res/android"
             android:accountType="com.eutechpro.syncadapterexample"
             android:icon="@drawable/ic_launcher"
             android:smallIcon="@drawable/ic_launcher"
             android:label="@string/app_name" />
-		```
+```
+
 		
 	Please, pay attention to **android:accountType="com.eutechpro.syncadapterexample"**
 
