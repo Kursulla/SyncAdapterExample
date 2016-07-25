@@ -60,7 +60,7 @@ Steps to have it:
             android:name="ch.teleboy.sync_app_settings.StubContentProvider"
             android:authorities="com.eutechpro.syncadapterexample.provider"
             android:exported="false"
-            android:syncable="true">
+            android:syncable="true"/>
 ```       	
        
 Here, pay attention to authorities value: 			
@@ -75,11 +75,11 @@ Method **onPerformSync** will be called upon successfull sync call, so there sho
 
 But, that is not all. You need few more steps.
 
-First, add xml settings. Afain, in "xml" directory add **synxadapter.xml** with following code:
+First, add xml settings. Afain, in "xml" directory add **syncadapter.xml** with following code:
 
 ```XML
 	<?xml version="1.0" encoding="utf-8"?>
-		<sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
+	<sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
               android:accountType="com.eutechpro.syncadapterexample"
               android:allowParallelSyncs="false"
               android:contentAuthority="com.eutechpro.syncadapterexample.provider"
@@ -164,4 +164,4 @@ At the and, add permissions in manifest
 ```
 
 
-###5.Enyoj!
+###5.Enjoy!
