@@ -34,7 +34,7 @@ You will create it in 4 simple steps:
    
    
 ```XML
-   	<service android:name="ch.teleboy.sync_app_settings.StubAuthenticatorService">
+   	<service android:name="com.eutechpro.syncadapterexample.StubAuthenticatorService">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator" />
             </intent-filter>
@@ -57,7 +57,7 @@ Steps to have it:
 	
 ```XML
 	<provider
-            android:name="ch.teleboy.sync_app_settings.StubContentProvider"
+            android:name="com.eutechpro.syncadapterexample.StubContentProvider"
             android:authorities="com.eutechpro.syncadapterexample.provider"
             android:exported="false"
             android:syncable="true"/>
