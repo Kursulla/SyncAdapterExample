@@ -1,9 +1,9 @@
 # SyncAdapterExample
 Android SyncAdapter can be hard for beginners. Here is small example project
 
-##Steps
+## Steps
 
-###1. Create Stub Authenticator
+### 1. Create Stub Authenticator
 
 Even if you have no plans of using Authentication in your app, you MUST have Authenticator implementation.
 It can be dummy (stub) but it has to be there.
@@ -16,13 +16,12 @@ You will create it in 4 simple steps:
 
 	
 ```xml
-   <?xml version="1.0" encoding="utf-8"?>
-	   <account-authenticator 
-			xmlns:android="http://schemas.android.com/apk/res/android"
-            android:accountType="com.eutechpro.syncadapterexample"
-            android:icon="@drawable/ic_launcher"
-            android:smallIcon="@drawable/ic_launcher"
-            android:label="@string/app_name" />
+<?xml version="1.0" encoding="utf-8"?>
+   <account-authenticator xmlns:android="http://schemas.android.com/apk/res/android"
+      android:accountType="com.eutechpro.syncadapterexample"
+      android:icon="@drawable/ic_launcher"
+      android:smallIcon="@drawable/ic_launcher"
+      android:label="@string/app_name" />
 ```
 
 		
@@ -46,7 +45,7 @@ You will create it in 4 simple steps:
    	
 
 
-###2. Create Stub ContentProvider
+### 2. Create Stub ContentProvider
 
 Again, the same story as for Authenticator. Even if you do not need ContentProvider, you MUST have one.
 Steps to have it:
@@ -68,7 +67,7 @@ Here, pay attention to authorities value:
 
 
 
-###3. Create SyncAdapter
+### 3. Create SyncAdapter
 
 Now, we are getting to the real deal. Create SyncAdapter extending AbstractThreadedSyncAdapter.
 Method **onPerformSync** will be called upon successfull sync call, so there should be your magic code.
@@ -103,21 +102,20 @@ And final step is to create Service that will run your SyncAdapter: **SyncAdapte
 Of course, define it in Manifset file
 
 ```XML
-		<service
-            android:name="ch.teleboy.sync_app_settings.SyncAdapterService"
-            android:exported="true"
-            android:process=":sync">
-            <intent-filter>
+<service android:name="ch.teleboy.sync_app_settings.SyncAdapterService"
+	android:exported="true"
+	android:process=":sync">
+	<intent-filter>
                 <action android:name="android.content.SyncAdapter" />
-            </intent-filter>
-            <meta-data
+        </intent-filter>
+        <meta-data
                 android:name="android.content.SyncAdapter"
                 android:resource="@xml/syncadapter" />
-        </service>
+</service>
 ```
 
 
-###4. Syncing
+### 4. Syncing
 
 Starting Sync process is simple.
 
