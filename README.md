@@ -33,14 +33,14 @@ You will create it in 4 simple steps:
    
    
 ```XML
-   	<service android:name="com.eutechpro.syncadapterexample.StubAuthenticatorService">
-            <intent-filter>
-                <action android:name="android.accounts.AccountAuthenticator" />
-            </intent-filter>
-            <meta-data
-                android:name="android.accounts.AccountAuthenticator"
-                android:resource="@xml/authenticator" />
-        </service>
+<service android:name="com.eutechpro.syncadapterexample.StubAuthenticatorService">
+      <intent-filter>
+         <action android:name="android.accounts.AccountAuthenticator" />
+      </intent-filter>
+      <meta-data
+         android:name="android.accounts.AccountAuthenticator"
+         android:resource="@xml/authenticator" />
+</service>
 ```
    	
 
@@ -55,11 +55,11 @@ Steps to have it:
 
 	
 ```XML
-	<provider
-            android:name="com.eutechpro.syncadapterexample.StubContentProvider"
-            android:authorities="com.eutechpro.syncadapterexample.provider"
-            android:exported="false"
-            android:syncable="true"/>
+<provider
+	android:name="com.eutechpro.syncadapterexample.StubContentProvider"
+        android:authorities="com.eutechpro.syncadapterexample.provider"
+        android:exported="false"
+        android:syncable="true"/>
 ```       	
        
 Here, pay attention to authorities value: 			
@@ -77,7 +77,7 @@ But, that is not all. You need few more steps.
 First, add xml settings. Afain, in "xml" directory add **syncadapter.xml** with following code:
 
 ```XML
-	<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 	<sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
               android:accountType="com.eutechpro.syncadapterexample"
               android:allowParallelSyncs="false"
@@ -91,8 +91,8 @@ First, add xml settings. Afain, in "xml" directory add **syncadapter.xml** with 
 Pay attention on
 
 ```XML
-	android:accountType="com.eutechpro.syncadapterexample"
-	android:contentAuthority="com.eutechpro.syncadapterexample.provider"
+android:accountType="com.eutechpro.syncadapterexample"
+android:contentAuthority="com.eutechpro.syncadapterexample.provider"
 ```
 
 For the rest of attributes, please refer to [documentation](https://developer.android.com/training/sync-adapters/creating-sync-adapter.html#CreateSyncAdapterMetadata)
@@ -123,30 +123,30 @@ Starting Sync process is simple.
 		
 		
 ```Java
-		public static final String AUTHORITY    = "com.eutechpro.syncadapterexample.provider";
-    	public static final String ACCOUNT_TYPE = "com.eutechpro.syncadapterexample";
-    	public static final String ACCOUNT      = "dummyaccount";
+public static final String AUTHORITY    = "com.eutechpro.syncadapterexample.provider";
+public static final String ACCOUNT_TYPE = "com.eutechpro.syncadapterexample";
+public static final String ACCOUNT      = "dummyaccount";
 
-		Account newAccount = new Account(ACCOUNT, ACCOUNT_TYPE);
-		accountManager.addAccountExplicitly(newAccount, null, null)
+Account newAccount = new Account(ACCOUNT, ACCOUNT_TYPE);
+accountManager.addAccountExplicitly(newAccount, null, null)
 ```
 		
 2. Start SyncAdapter
 	
 	
 ```Java
-		ContentResolver.setSyncAutomatically(newAccount, AUTHORITY, true);
+ContentResolver.setSyncAutomatically(newAccount, AUTHORITY, true);
 ```
 
 3. If you want to force Sync process, call
 
 		
 ```Java
-		Bundle bundle = new Bundle();
-        bundle.putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
-        bundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
+Bundle bundle = new Bundle();
+bundle.putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
+bundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
 
-        ContentResolver.requestSync(newAccount, AUTHORITY, bundle);
+ContentResolver.requestSync(newAccount, AUTHORITY, bundle);
 ```
 
 
@@ -155,10 +155,10 @@ Starting Sync process is simple.
 At the and, add permissions in manifest
 
 ```XML
-	<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
-    	<uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
-    	<uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
-    	<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+<uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+<uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
 ```
 
 
