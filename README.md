@@ -150,7 +150,7 @@ ContentResolver.requestSync(newAccount, AUTHORITY, bundle);
 ```
 
 
-###5. Add permissions
+### 5. Add permissions
 
 At the and, add permissions in manifest
 
@@ -162,4 +162,4 @@ At the and, add permissions in manifest
 ```
 
 
-###5.Enjoy!
+### 5.Enjoy!
